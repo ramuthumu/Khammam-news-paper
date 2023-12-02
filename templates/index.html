@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Articles List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto; /* Center the container */
+            text-align: left; /* Left-align the content inside the container */
+        }
+        .article {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .article img {
+            max-width: 50px;
+            margin-right: 10px;
+        }
+        .article a {
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Articles</h1>
+        {% for article in articles %}
+            <div class="article">
+                {% if article.image_url %}
+                    <img src="{{ article.image_url }}" alt="Article Image">
+                {% endif %}
+                <a href="{{ article.link }}">{{ article.title }}</a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
