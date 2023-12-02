@@ -3,24 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ article.title }}</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Mallanna&display=swap" rel="stylesheet">
+    <title>{{ content.title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            max-width: 800px; /* Adjust the width as needed */
+            width: 100%;
+            text-align: justify;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="article-title">{{ article.title }}</h1>
-        {% if article.updated_time %}
-            <p class="article-updated-time">{{ article.updated_time }}</p>
-        {% endif %}
-        {% if article.main_image %}
-            <div class="article-image">
-                <img src="{{ article.main_image.src }}" alt="{{ article.main_image.alt }}" class="article-image">
-            </div>
-        {% endif %}
-        <div class="article-content">
-            {{ article.content | safe }}
+        <h1>{{ content.title }}</h1>
+        <div class="content">
+            {{ content.content | safe }}
         </div>
+        {% for image_url in content.images %}
+            <img src="{{ image_url }}" alt="Article Image">
+        {% endfor %}
     </div>
 </body>
 </html>

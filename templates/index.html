@@ -35,7 +35,7 @@
                 {% if article.image_url %}
                     <img src="{{ article.image_url }}" alt="Article Image">
                 {% endif %}
-                <a href="{{ article.link }}">{{ article.title }}</a>
+                <a href="{{ url_for('article', url=article.link) }}">{{ article.title }}</a>
             </div>
         {% endfor %}
     </div>
